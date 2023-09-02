@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addPassword } from "./features/passwords/passwordsSlice";
-import PasswordsList from "./passwordsList";
+import PasswordStrength from "./PasswordStrength";
+import PasswordsList from "./PasswordsList";
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -121,6 +122,7 @@ function Password() {
       </div>
       <div>
         <PasswordsList />
+        <PasswordStrength password={password} />
       </div>
     </div>
   );
