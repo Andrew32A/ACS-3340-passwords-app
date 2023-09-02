@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addPassword } from "./features/passwords/passwordsSlice";
 import PasswordStrength from "./PasswordStrength";
 import PasswordsList from "./PasswordsList";
+import "./password.css";
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -109,10 +110,14 @@ function Password() {
         </label>
       </div>
       <div>
-        <button onClick={() => setPassword(generatePassword())}>
+        <button
+          className="button"
+          onClick={() => setPassword(generatePassword())}
+        >
           Generate
         </button>
         <button
+          className="button"
           onClick={() =>
             dispatch(addPassword({ name: name, password: password }))
           }
