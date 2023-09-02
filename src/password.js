@@ -52,54 +52,59 @@ function Password() {
   }
 
   return (
-    <div>
-      <div>
-        <label>
+    <div className="password-container">
+      <div className="input-group">
+        <label className="label">
           Password Name/Description:
           <input
+            className="input"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </label>
       </div>
-      <div>
-        <label>
+      <div className="input-group">
+        <label className="label">
           Password:
           <input
+            className="input"
             type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
       </div>
-      <div>
-        <label>
+      <div className="input-group">
+        <label className="label">
           Password Length:
           <input
+            className="range-input"
             type="range"
             min="4"
             max="20"
             value={passwordLength}
             onChange={(e) => setPasswordLength(e.target.value)}
           />
-          {passwordLength}
+          <span className="range-value">{passwordLength}</span>
         </label>
       </div>
-      <div>
-        <label>
+      <div className="input-group">
+        <label className="label">
           Use Hyphens:
           <input
+            className="checkbox"
             type="checkbox"
             checked={useHyphens}
             onChange={() => setUseHyphens(!useHyphens)}
           />
         </label>
       </div>
-      <div>
-        <label>
+      <div className="input-group">
+        <label className="label">
           Password Type:
           <select
+            className="select"
             value={passwordType}
             onChange={(e) => setPasswordType(e.target.value)}
           >
@@ -109,15 +114,15 @@ function Password() {
           </select>
         </label>
       </div>
-      <div>
+      <div className="button-group">
         <button
-          className="button"
+          className="button generate-btn"
           onClick={() => setPassword(generatePassword())}
         >
           Generate
         </button>
         <button
-          className="button"
+          className="button save-btn"
           onClick={() =>
             dispatch(addPassword({ name: name, password: password }))
           }
@@ -125,7 +130,7 @@ function Password() {
           Save
         </button>
       </div>
-      <div>
+      <div className="widgets">
         <PasswordsList />
         <PasswordStrength password={password} />
       </div>
