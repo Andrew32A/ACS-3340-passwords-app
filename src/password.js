@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addPassword } from "./features/passwords/passwordsSlice";
+import PasswordsList from "./passwordsList";
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function Password() {
+  const dispatch = useDispatch();
   const [password, setPassword] = useState("p@$$w0rd");
   const [name, setName] = useState("");
   const [passwordLength, setPasswordLength] = useState(9);
@@ -107,6 +111,16 @@ function Password() {
         <button onClick={() => setPassword(generatePassword())}>
           Generate
         </button>
+        <button
+          onClick={() =>
+            dispatch(addPassword({ name: name, password: password }))
+          }
+        >
+          Save
+        </button>
+      </div>
+      <div>
+        <PasswordsList />
       </div>
     </div>
   );
